@@ -37,10 +37,11 @@ public abstract class AbstractComponentRegistry<E extends Component, C>
 
     @Override
     public Set<String> lookup(AttributeKey key) {
-        return entries.values().stream()
-                .filter(component -> component.hasAttr(key))
-                .map(Component::getName)
-                .collect(Collectors.toSet());
+        //return entries.values().stream()
+        //        .filter(component -> component.hasAttr(key))
+        //        .map(Component::getName)
+        //        .collect(Collectors.toSet());
+        return null;
     }
 
     @Override

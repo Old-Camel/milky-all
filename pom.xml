@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.sliew</groupId>
     <artifactId>milky-all</artifactId>
-    <version>1.0.11-SNAPSHOT</version>
+    <version>1.0.11</version>
     <packaging>pom</packaging>
     <name>milky-all</name>
     <url>https://github.com/kalencaya/milky-all</url>
@@ -38,18 +38,6 @@
         <url>https://github.com/kalencaya/milky/issues</url>
     </issueManagement>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus</id>
-            <name>Sonatype Nexus Release</name>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <modules>
         <module>build-tools</module>
@@ -404,20 +392,32 @@
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.8</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>sonatype-nexus</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.sonatype.plugins</groupId>-->
+<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--                <version>1.6.8</version>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <serverId>sonatype-nexus</serverId>-->
+<!--                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
+<!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
-
+    <distributionManagement>
+        <snapshotRepository>
+            <id>yunzai-nexus3</id>
+            <url>http://222.30.194.85:8081/repository/maven-yunzai-snapshot/</url>
+        </snapshotRepository>
+        <repository>
+            <id>yunzai-nexus3</id>
+            <!-- 注意如果发布的是 snapshot 版本的代码，必须使用该地址，而且版本号，必须是 -SNAPSHOT 结尾 -->
+            <!--            <url>http://222.30.194.85:8081/repository/maven-yunzai-snapshot/</url>-->
+            <!-- 注意如果发布的是 release 版本的代码，必须使用该地址，而且版本号，必须不能带 snapshot -->
+            <url>http://222.30.194.85:8081/repository/maven-yunzai-release/</url>
+        </repository>
+    </distributionManagement>
     <profiles>
         <profile>
             <id>java11</id>
